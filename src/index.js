@@ -1,11 +1,26 @@
-import { config } from 'config'
+/**
+ * 全局配置
+ */
+export const config = {
 
-// const STATUS = {
-//   ABORT: -1,
-//   INIT: 0,
-//   LOADING: 1,
-//   COMPLETE: 2,
-// }
+  /**
+  * onError event
+  * @type Function
+  */
+  onError: console.error,
+
+  /**
+  * onLoad event
+  * @type Function
+  */
+  onLoad: console.log,
+
+  /**
+  * @type number
+  */
+  retry: 1,
+}
+
 Component({
   properties: {
     src: {

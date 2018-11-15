@@ -1,6 +1,6 @@
 {
-  "name": "miniprogram-custom-component",
-  "version": "1.0.0",
+  "name": "miniprogram-image",
+  "version": "0.0.1",
   "description": "",
   "main": "miniprogram_dist/index.js",
   "scripts": {
@@ -29,9 +29,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wechat-miniprogram/miniprogram-custom-component.git"
+    "url": "https://github.com/NewFuture/miniprogram-img.git"
   },
-  "author": "wechat-miniprogram",
+  "author": "New Future",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.3",
