@@ -1,0 +1,10 @@
+<img
+    src="https://mpfcdnimage.live.com/tingpfiles/0c1f2c176f5f4737b80de741184224bd.jpg"
+    data-thumb="https://mpfcdnimage.live.com/tingpfiles/b1b095821d224062a2554337d1212590.jpg?basic=138w_1q.jpg"
+    data-download="{{true}}"
+    data-retry="{{1}}"
+    class="img-class"
+    mode="scaleToFill"
+    lazy-load="{{false}}"
+    bind:error="onError"
+/>

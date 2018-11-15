@@ -1,0 +1,5 @@
+.Img-thumbnail {
+    filter: blur(5rpx);
+    position: absolute;
+    z-index: -1;
+}

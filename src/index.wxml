@@ -1,0 +1,22 @@
+<!-- <view class="Img-loading" wx:if="{{!imgLoaded}}"></view> -->
+
+<image 
+    class="Img-thumbnail"
+    wx:if="{{!imgLoaded && imgThumb && imgThumb !== imgSrc}}"
+    mode="{{imgMode}}"
+    lazy-load="{{lazy}}"
+    src="{{imgThumb}}"
+    bind:error="onImageError"
+    bind:load="onImageLoad"
+    data-type="thumb"
+    />
+<image
+    class="Img-data"
+    hidden="{{!imgLoaded}}"
+    lazy-load="{{lazy}}"
+    mode="{{imgMode}}"
+    src="{{imgSrc}}"
+    bind:error="onImageError"
+    bind:load="onImageLoad"
+    data-type="data"
+    />
