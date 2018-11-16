@@ -1,6 +1,4 @@
-<!-- <view class="Img-loading" wx:if="{{!imgLoaded}}"></view> -->
-
-<image 
+<image
     class="Img-thumbnail"
     wx:if="{{!imgLoaded && imgThumb && imgThumb !== imgSrc}}"
     mode="{{imgMode}}"

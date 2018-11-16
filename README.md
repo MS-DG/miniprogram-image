@@ -6,10 +6,26 @@ the miniprogram image component
 * [x] 错误处理
 * [x] 成功通知
 
+## install
+
+```
+npm i miniprogram-image -S
+```
+
+```json
+{
+  "usingComponents": {
+    "img": "miniprogram-image"
+  }
+}
+```
+
+## usage
+
 ```html
 <img
     src="大图.jpg"
-    data-thumb="缩略图/默认图.jpg"
+    data-thumb="缩略图或者本地默认图片.jpg"
     data-retry="{{1}}"
     mode="scaleToFill"
     lazy-load="{{false}}"
