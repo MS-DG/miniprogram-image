@@ -2,7 +2,7 @@
     class="{{imgThumb ? 'Img-thumbnail':'Img-loading'}}"
     wx:if="{{!imgLoaded}}"
     mode="{{imgMode}}"
-    lazy-load="{{lazy}}"
+    lazy-load="{{lazyLoad}}"
     src="{{imgThumb}}"
     bind:error="onImageError"
     bind:load="onImageLoad"
@@ -10,7 +10,7 @@
 />
 <image
     class="Img-data {{imgLoaded && 'is-loaded'}}"
-    lazy-load="{{lazy}}"
+    lazy-load="{{lazyLoad}}"
     mode="{{imgMode}}"
     src="{{imgSrc}}"
     bind:error="onImageError"

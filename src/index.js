@@ -49,27 +49,22 @@ Component({
           this._updateAsync({ imgMode: newVal })
         }
       }
-    },
-    lazyLoad: {
-      type: Boolean,
-      value: false,
-      observer(newVal) {
-        // 不能直接判断是否相等
-        this._updateAsync({ lazy: newVal })
-      }
     }
   },
   data: {
     imgThumb: '',
     imgSrc: '',
     imgMode: '',
-    lazy: false,
+    lazyLoad: false,
     imgLoaded: false,
   },
 
   lifetimes: {
     attached() {
-      this.setData({ imgThumb: this.dataset.thumb })
+      this.setData({
+        imgThumb: this.dataset.thumb,
+        lazyLoad: this.dataset.lazy
+      })
       if (this.dataset.retry === undefined) {
         this.dataset.retry = config.retry
       }
