@@ -13,7 +13,7 @@ export const config = {
   * onLoad event
   * @type Function
   */
-  onLoad: console.log,
+  onLoad: console.info,
 
   /**
   * @type number
@@ -27,7 +27,18 @@ Component({
       type: String,
       observer(newVal, oldVal) {
         if (oldVal !== newVal) {
-          this._updateAsync({ imgSrc: newVal })
+          if (this.dataset.thumb === this.data.imgThumb) {
+            this._updateAsync({
+              imgSrc: newVal,
+              imgLoaded: false
+            })
+          } else {
+            this._updateAsync({
+              imgSrc: newVal,
+              imgThumb: this.dataset.thumb,
+              imgLoaded: false
+            })
+          }
         }
       }
     },
@@ -71,14 +82,16 @@ Component({
      */
     onImageLoad(e) {
       const type = e.currentTarget.dataset.type
-      const url = type === 'data' ? this.data.imgSrc : this.data.imgThumb
       if (type === 'data') {
         this._updateAsync({ imgLoaded: true })
       }
+
       this.triggerEvent('update', {
         type: 'data',
         src: this.data.imgSrc
       })
+
+      const url = type === 'data' ? this.data.imgSrc : this.data.imgThumb
       config.onLoad && config.onLoad(e, url)
     },
 
@@ -106,9 +119,11 @@ Component({
     * @param {object} data
     */
     _updateAsync(data) {
-      wx.nextTick(() => {
-        this.setData(data)
-      })
+      if (wx.nextTick) {
+        wx.nextTick(() => this.setData(data))
+      } else {
+        setTimeout(() => this.setData(data), 0)
+      }
     }
   },
 })

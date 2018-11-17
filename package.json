@@ -1,12 +1,12 @@
 {
   "name": "miniprogram-image",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "",
   "main": "miniprogram_dist/index.js",
   "scripts": {
     "dev": "gulp dev --develop",
     "watch": "gulp watch --develop --watch",
-    "build": "gulp",
+    "build": "npm run clean && cp src miniprogram_dist -r",
     "dist": "npm run build",
     "clean-dev": "gulp clean --develop",
     "clean": "gulp clean",

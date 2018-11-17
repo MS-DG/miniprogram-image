@@ -222,7 +222,8 @@ class BuildTask {
       if (jsFileList &&
         jsFileList.length &&
         !_.compareArray(this.cachedComponentListMap.jsFileList, jsFileList)) {
-        js(this.componentListMap.jsFileMap, this)
+        // js(this.componentListMap.jsFileMap, this)
+        return copy(jsFileList)
       }
 
       return done()
@@ -247,10 +248,20 @@ class BuildTask {
       return done()
     }))
 
+
     /**
      * watch json
      */
     gulp.task(`${id}-watch-json`, () => gulp.watch(this.componentListMap.jsonFileList, {cwd: srcPath, base: srcPath}, gulp.series(`${id}-component-check`, gulp.parallel(`${id}-component-wxml`, `${id}-component-wxss`, `${id}-component-js`, `${id}-component-json`))))
+
+    /**
+     * watch js
+     */
+    gulp.task(`${id}-watch-js`, () => {
+      this.cachedComponentListMap.jsFileList = null;
+      return gulp.watch(this.componentListMap.jsFileList, {cwd: srcPath, base: srcPath}, gulp.series(`${id}-component-js`))
+    })
+
 
     /**
      * watch wxml
