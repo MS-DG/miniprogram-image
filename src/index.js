@@ -35,7 +35,7 @@ Component({
           } else {
             this._updateAsync({
               imgSrc: newVal,
-              imgThumb: this.dataset.thumb,
+              imgThumb: this.dataset.thumb || '',
               imgLoaded: false
             })
           }
@@ -62,8 +62,8 @@ Component({
   lifetimes: {
     attached() {
       this.setData({
-        imgThumb: this.dataset.thumb,
-        lazyLoad: this.dataset.lazy
+        imgThumb: this.dataset.thumb || '',
+        lazyLoad: !!this.dataset.lazy
       })
       if (this.dataset.retry === undefined) {
         this.dataset.retry = config.retry
