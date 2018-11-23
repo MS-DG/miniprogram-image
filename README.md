@@ -1,4 +1,4 @@
-# miniprogram-img
+# miniprogram-image
 the miniprogram image component for large picture. 
 
 * UX
