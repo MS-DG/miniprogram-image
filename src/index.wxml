@@ -1,20 +1,21 @@
 <image
-    class="Img-data {{imgLoaded && 'is-loaded'}}"
-    lazy-load="{{lazyLoad}}"
-    mode="{{imgMode}}"
+    class="Img {{imgLoaded&&'is-loaded'}}"
     src="{{imgSrc}}"
+    mode="{{imgMode}}"
+    lazy-load="{{lazyLoad}}"
     bind:error="onImageError"
     bind:load="onImageLoad"
     data-type="data"
 >
     <image
-        class="{{imgThumb ? 'Img-thumbnail':'Img-loading'}}"
-        wx:if="{{!imgLoaded}}"
+        class="Img-thumbnail"
+        wx:if="{{imgThumb && !imgLoaded}}"
+        src="{{imgThumb}}"
         mode="{{imgMode}}"
         lazy-load="{{lazyLoad}}"
-        src="{{imgThumb}}"
         bind:error="onImageError"
         bind:load="onImageLoad"
         data-type="thumb"
     />
+    <text class="Img-loading" wx:if="{{!thumbLoaded && !imgLoaded}}"/>
 </image>

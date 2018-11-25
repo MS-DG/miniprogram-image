@@ -35,8 +35,9 @@ Component({
           } else {
             this._updateAsync({
               imgSrc: newVal,
+              imgLoaded: false,
               imgThumb: this.dataset.thumb || '',
-              imgLoaded: false
+              thumbLoaded: false
             })
           }
         }
@@ -57,6 +58,7 @@ Component({
     imgMode: '',
     lazyLoad: false,
     imgLoaded: false,
+    thumbLoaded: false,
   },
 
   lifetimes: {
@@ -78,15 +80,19 @@ Component({
     onImageLoad(e) {
       const type = e.currentTarget.dataset.type
       if (type === 'data') {
+        // 高清大图加载成功
         this._updateAsync({ imgLoaded: true })
+      } else {
+        // 缩略图加载成功
+        this._updateAsync({ thumbLoaded: true })
       }
 
-      this.triggerEvent('update', {
-        type: 'data',
-        src: this.data.imgSrc
-      })
-
       const url = type === 'data' ? this.data.imgSrc : this.data.imgThumb
+      this.triggerEvent('update', {
+        type: type,
+        src: url
+      })
+      console.warn(this.data)
       config.onLoad && config.onLoad(e, url)
     },
 
