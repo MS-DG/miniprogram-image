@@ -92,7 +92,6 @@ Component({
         type: type,
         src: url
       })
-      console.warn(this.data)
       config.onLoad && config.onLoad(e, url)
     },
 
