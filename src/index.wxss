@@ -22,10 +22,11 @@
 /* 缩略图 */
 
 .Img-thumbnail {
+    position: absolute;
     top: 0;
     z-index: -1;
     opacity: .5;
-    filter: blur(25rpx);
+    filter: blur(20rpx);
 }
 
 .Img-thumbnail:only-child {
@@ -58,8 +59,11 @@
     }
 }
 
-/* 根元素默认样式 */
+/* 根元素默认样式(image默认) */
 
 :host {
     overflow: hidden;
+    width: 320px;
+    height: 240px;
+    display: inline-block;
 }
