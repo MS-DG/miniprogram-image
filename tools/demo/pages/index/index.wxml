@@ -8,3 +8,13 @@
     lazy-load="{{false}}"
     bind:update="onUpdate"
 />
+<img
+    src="{{src}}"
+    data-thumb="{{thumb}}"
+    data-download="{{true}}"
+    data-retry="{{1}}"
+    class="img-class"
+    mode="widthFix"
+    lazy-load="{{false}}"
+    bind:update="onUpdate"
+/> 

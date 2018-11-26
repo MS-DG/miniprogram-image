@@ -62,7 +62,6 @@
 /* 根元素默认样式(image默认) */
 
 :host {
-    overflow: hidden;
     width: 320px;
     height: 240px;
     display: inline-block;
