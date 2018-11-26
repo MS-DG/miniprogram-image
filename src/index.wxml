@@ -1,6 +1,6 @@
 <image
     class="Img{{imgLoaded?' is-loaded':''}}"
-    src="{{imgSrc}}x"
+    src="{{imgSrc}}"
     mode="{{imgMode}}"
     lazy-load="{{lazyLoad}}"
     bind:error="onImageError"
