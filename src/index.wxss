@@ -1,7 +1,6 @@
 .Img,
 .Img-thumbnail {
     width: 100%;
-    height: 100%;
     transition: opacity .9s;
 }
 
@@ -22,7 +21,6 @@
 /* 缩略图 */
 
 .Img-thumbnail {
-    position: absolute;
     top: 0;
     z-index: -1;
     opacity: .5;
@@ -31,6 +29,7 @@
 
 .Img-thumbnail:only-child {
     /* 缩略图加载完成(无loading时),不透明度增加 */
+    position: absolute;
     opacity: .95;
 }
 
@@ -62,7 +61,5 @@
 /* 根元素默认样式(image默认) */
 
 :host {
-    width: 320px;
-    height: 240px;
     display: inline-block;
 }
