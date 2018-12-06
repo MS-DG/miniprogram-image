@@ -31,7 +31,7 @@
     z-index: -1;
     opacity: .5;
     filter: blur(1rpx);
-    transition: .5s filter linear;
+    transition: .3s filter linear;
 }
 
 .Img-thumbnail.is-loaded {
