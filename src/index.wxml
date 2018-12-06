@@ -1,22 +1,36 @@
+<block wx:if="{{imgThumb}}">
+    <image
+        class="Img {{imgLoaded?' is-loaded':''}}"
+        hidden="{{!imgLoaded}}"
+        src="{{imgSrc}}"
+        mode="{{imgMode}}"
+        lazy-load="{{lazyLoad}}"
+        bind:error="onImageError"
+        bind:load="onImageLoad"
+        data-type="data"
+    />
+    <image
+        class="Img-thumbnail {{thumbLoaded?'is-loaded':''}}"
+        wx:if="{{!imgLoaded}}"
+        src="{{imgThumb}}"
+        mode="{{imgMode}}"
+        lazy-load="{{lazyLoad}}"
+        bind:error="onImageError"
+        bind:load="onImageLoad"
+        data-type="thumb"
+    >
+        <text class="Img-loading" wx:if="{{!thumbLoaded && !imgLoaded}}"/>
+    </image>
+</block>
 <image
-    class="Img{{imgLoaded?' is-loaded':''}}"
-    hidden="{{!imgLoaded}}"
+    wx:else
+    class="Img_noThumb {{imgLoaded?' is-loaded':''}}"
     src="{{imgSrc}}"
     mode="{{imgMode}}"
     lazy-load="{{lazyLoad}}"
     bind:error="onImageError"
     bind:load="onImageLoad"
     data-type="data"
-/>
-<image
-    class="Img-thumbnail {{thumbLoaded?'is-loaded':''}}"
-    wx:if="{{imgThumb && !imgLoaded}}"
-    src="{{imgThumb}}"
-    mode="{{imgMode}}"
-    lazy-load="{{lazyLoad}}"
-    bind:error="onImageError"
-    bind:load="onImageLoad"
-    data-type="thumb"
 >
     <text class="Img-loading" wx:if="{{!thumbLoaded && !imgLoaded}}"/>
 </image>

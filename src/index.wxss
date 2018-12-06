@@ -1,6 +1,6 @@
 .Img,
+.Img_noThumb,
 .Img-thumbnail {
-    /* display: block; */
     width: 100%;
     transition: opacity .9s;
 }
@@ -9,14 +9,19 @@
 
 .Img {
     /* 未加载完成 */
-    /* position: relative; */
     opacity: .5;
 }
+.Img_noThumb {
+    position: relative;
+}
 
+.Img_noThumb.is-loaded,
 .Img.is-loaded {
-    /* 原图加载完 */
-    position: static;
     opacity: inherit;
+    /* 原图加载完 */
+}
+.Img_noThumb.is-loaded{
+    position: static;
 }
 
 /* 缩略图 */
@@ -33,7 +38,7 @@
     /* 缩略图加载完成(无loading时),不透明度增加 */
     /* top: -100%; */
     position: unset;
-    filter: blur(18rpx);
+    filter: blur(15rpx);
     opacity: .95;
 }
 
@@ -69,5 +74,5 @@
 /* 根元素默认样式(image默认) */
 
 :host {
-    display: inline-block;
+    display: flex;
 }
