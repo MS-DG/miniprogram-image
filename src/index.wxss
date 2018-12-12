@@ -3,6 +3,7 @@
 .Img-thumbnail {
     width: 100%;
     transition: opacity .9s;
+    will-change: opacity;
 }
 
 /* 原图 */
@@ -11,6 +12,12 @@
     /* 未加载完成 */
     opacity: .5;
 }
+
+.Img_noThumb:not(.is-loaded),
+.Img-thumbnail:not(.is-loaded) {
+    height: 100%;
+}
+
 .Img_noThumb {
     position: relative;
 }
@@ -20,25 +27,26 @@
     opacity: inherit;
     /* 原图加载完 */
 }
-.Img_noThumb.is-loaded{
+
+.Img_noThumb.is-loaded {
     position: static;
 }
 
 /* 缩略图 */
 
 .Img-thumbnail {
+    will-change: filter;
     position: relative;
-    z-index: -1;
     opacity: .5;
     filter: blur(1rpx);
-    transition: .3s filter linear;
+    transition: .25s filter linear;
 }
 
 .Img-thumbnail.is-loaded {
     /* 缩略图加载完成(无loading时),不透明度增加 */
     /* top: -100%; */
     position: unset;
-    filter: blur(15rpx);
+    filter: blur(12rpx);
     opacity: .95;
 }
 
