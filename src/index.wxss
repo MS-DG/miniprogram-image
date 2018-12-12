@@ -2,30 +2,31 @@
 .Img_noThumb,
 .Img-thumbnail {
     width: 100%;
-    transition: opacity .9s;
-    will-change: opacity;
 }
 
 /* 原图 */
 
 .Img {
     /* 未加载完成 */
-    opacity: .5;
+    transition: .1s filter ease-in;
 }
 
-.Img_noThumb:not(.is-loaded),
-.Img-thumbnail:not(.is-loaded) {
-    height: 100%;
+.Img:not(.is-loaded) {
+    opacity: .9;
+    filter: blur(10rpx);
 }
 
-.Img_noThumb {
+.Img_noThumb:not(.is-loaded) {
     position: relative;
+    min-height: 60rpx;
+    max-height: 100%;
 }
 
 .Img_noThumb.is-loaded,
 .Img.is-loaded {
-    opacity: inherit;
     /* 原图加载完 */
+    filter: inherit;
+    opacity: inherit;
 }
 
 .Img_noThumb.is-loaded {
@@ -34,12 +35,18 @@
 
 /* 缩略图 */
 
+.Img-thumbnail:not(.is-loaded) {
+    /* height: 100%; */
+    opacity: .5;
+    min-height: 60rpx;
+    max-height: 100%;
+}
+
 .Img-thumbnail {
     will-change: filter;
     position: relative;
-    opacity: .5;
-    filter: blur(1rpx);
-    transition: .25s filter linear;
+    filter: blur(2rpx);
+    transition: .25s filter ease-in-out;
 }
 
 .Img-thumbnail.is-loaded {
@@ -47,7 +54,7 @@
     /* top: -100%; */
     position: unset;
     filter: blur(12rpx);
-    opacity: .95;
+    opacity: 1;
 }
 
 /* 居中加载动画 */
