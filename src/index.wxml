@@ -1,4 +1,4 @@
-<block wx:if="{{imgThumb}}">
+<block wx:if="{{imgThumb && imgThumb !== 'undefined'}}">
     <image
         class="Img {{imgLoaded?' is-loaded':''}}"
         hidden="{{!imgLoaded}}"
@@ -19,7 +19,7 @@
         bind:load="onImageLoad"
         data-type="thumb"
     >
-        <text class="Img-loading" wx:if="{{!thumbLoaded && !imgLoaded}}"/>
+        <text class="Img-loading" hidden="{{thumbLoaded || imgLoaded}}"/>
     </image>
 </block>
 <image
@@ -32,5 +32,5 @@
     bind:load="onImageLoad"
     data-type="data"
 >
-    <text class="Img-loading" wx:if="{{!thumbLoaded && !imgLoaded}}"/>
+    <text class="Img-loading" wx:if="{{!imgLoaded}}"/>
 </image>
