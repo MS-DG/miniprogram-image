@@ -1,13 +1,16 @@
-/**
- * 全局配置
- */
-export const config = {
+
+const defaultConfig = {
 
   /**
   * onError event
   * @type Function
   */
   onError: console.error,
+
+  /**
+   * 重试
+   */
+  getRetryURL: (url, times) => url + ' ',
 
   /**
   * onLoad event
@@ -20,6 +23,17 @@ export const config = {
   */
   retry: 1,
 }
+
+const app = getApp();
+
+if (app && !app.__image_config) {
+  app.__image_config = defaultConfig;
+}
+
+/**
+ * 全局配置
+ */
+export const config = app ? app.__image_config : defaultConfig;
 
 Component({
   properties: {
@@ -106,8 +120,7 @@ Component({
         const url = this.data.imgSrc
         config.onError && config.onError(e, url)
         if (this.dataset.retry > 0) {
-          this.setData({ imgSrc: url + ' ' })
-          --this.dataset.retry
+          this.setData({ imgSrc: config.getRetryURL(url, this.dataset.retry--) });
         } else {
           this.triggerEvent('fail', this.data.imgSrc)
         }
