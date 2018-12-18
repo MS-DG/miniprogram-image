@@ -59,31 +59,22 @@ Component({
     },
     mode: {
       type: String,
-      observer(newVal, oldVal) {
-        if (oldVal !== newVal) {
-          this._updateAsync({ imgMode: newVal })
-        }
-      }
     }
   },
   data: {
     imgThumb: '',
     imgSrc: '',
-    imgMode: '',
     lazyLoad: false,
     imgLoaded: false,
     thumbLoaded: false,
   },
-
-  lifetimes: {
-    attached() {
-      this.setData({
-        imgThumb: this.dataset.thumb || '',
-        lazyLoad: !!this.dataset.lazy
-      })
-      if (this.dataset.retry === undefined) {
-        this.dataset.retry = config.retry
-      }
+  attached() {
+    this.setData({
+      imgThumb: this.dataset.thumb || '',
+      lazyLoad: !!this.dataset.lazy
+    })
+    if (this.dataset.retry === undefined) {
+      this.dataset.retry = config.retry
     }
   },
   methods: {
