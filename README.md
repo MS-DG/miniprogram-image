@@ -38,6 +38,7 @@ npm i miniprogram-image -S
     mode="scaleToFill"
     bind:fail="onFail"
     bind:update="onUpdate"
+    height="高度"
 />
 ```
 

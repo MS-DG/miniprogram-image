@@ -57,9 +57,8 @@ Component({
         }
       }
     },
-    mode: {
-      type: String,
-    }
+    mode: String,
+    height: String,
   },
   data: {
     imgThumb: '',
