@@ -1,5 +1,4 @@
 .Img,
-.Img_noThumb,
 .Img-thumbnail {
     width: 100%;
 }
@@ -16,22 +15,13 @@
     filter: blur(10rpx);
 }
 
-.Img_noThumb:not(.is-loaded) {
-    position: relative;
-    min-height: 60rpx;
-    max-height: 100%;
-}
 
-.Img_noThumb.is-loaded,
 .Img.is-loaded {
     /* 原图加载完 */
     filter: inherit;
     opacity: inherit;
 }
 
-.Img_noThumb.is-loaded {
-    position: static;
-}
 
 /* 缩略图 */
 
@@ -44,15 +34,15 @@
 
 .Img-thumbnail {
     will-change: filter;
-    position: relative;
+    position: absolute;
     filter: blur(2rpx);
+    left:0;
     transition: .25s filter ease-in-out;
 }
 
 .Img-thumbnail.is-loaded {
     /* 缩略图加载完成(无loading时),不透明度增加 */
     /* top: -100%; */
-    position: unset;
     filter: blur(12rpx);
     opacity: 1;
 }
@@ -70,9 +60,9 @@
     display: block;
     animation: loading 1.2s steps(12, end) infinite;
     background: transparent url("data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Cpath fill='none' d='M0 0h100v100H0z'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23E9E9E9' rx='5' ry='5' transform='translate(0 -30)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23989697' rx='5' ry='5' transform='rotate(30 105.98 65)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%239B999A' rx='5' ry='5' transform='rotate(60 75.98 65)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23A3A1A2' rx='5' ry='5' transform='rotate(90 65 65)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23ABA9AA' rx='5' ry='5' transform='rotate(120 58.66 65)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23B2B2B2' rx='5' ry='5' transform='rotate(150 54.02 65)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23BAB8B9' rx='5' ry='5' transform='rotate(180 50 65)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23C2C0C1' rx='5' ry='5' transform='rotate(-150 45.98 65)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23CBCBCB' rx='5' ry='5' transform='rotate(-120 41.34 65)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23D2D2D2' rx='5' ry='5' transform='rotate(-90 35 65)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23DADADA' rx='5' ry='5' transform='rotate(-60 24.02 65)'/%3E%3Crect width='7' height='20' x='46.5' y='40' fill='%23E2E2E2' rx='5' ry='5' transform='rotate(-30 -5.98 65)'/%3E%3C/svg%3E") no-repeat center;
-    background-size: 60rpx;
-    width: 60rpx;
-    height: 60rpx;
+    background-size: 50rpx;
+    width: 50rpx;
+    height: 50rpx;
 }
 
 @keyframes loading {
@@ -90,4 +80,6 @@
 
 :host {
     display: flex;
-}
+    position: relative;
+    width: 100%;
+} 
