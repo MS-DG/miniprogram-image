@@ -19,4 +19,4 @@
     style="{{height?'height:'+height:''}}"
     data-type="thumb"
 />
-<icon class="Img-loading" wx:if="{{!(imgLoaded)}}"/>
+<view class="Img-loading" wx:if="{{!(imgLoaded)}}"/>
