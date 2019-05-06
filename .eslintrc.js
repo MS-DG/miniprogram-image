@@ -80,13 +80,13 @@ module.exports = {
     ],
     'semi': [
       'error',
-      'never'
+      'always'
     ],
-    "no-unused-expressions":[
-      "error", 
-      { 
+    "no-unused-expressions": [
+      "error",
+      {
         "allowShortCircuit": true,
-        "allowTernary": true 
+        "allowTernary": true
       }
     ]
   },
@@ -99,5 +99,6 @@ module.exports = {
     'Behavior': true,
     'wx': true,
     'getCurrentPages': true,
+    'getApp': 'readonly',
   }
 }

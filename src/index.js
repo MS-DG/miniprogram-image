@@ -10,6 +10,7 @@ const defaultConfig = {
   /**
    * 重试
    */
+  // eslint-disable-next-line no-unused-vars
   getRetryURL: (url, times) => url + ' ',
 
   /**
@@ -22,7 +23,7 @@ const defaultConfig = {
   * @type number
   */
   retry: 1,
-}
+};
 
 const app = getApp();
 
@@ -45,14 +46,14 @@ Component({
             this._updateAsync({
               imgSrc: newVal,
               imgLoaded: false
-            })
+            });
           } else {
             this._updateAsync({
               imgSrc: newVal,
               imgLoaded: false,
               imgThumb: this.dataset.thumb || '',
               thumbLoaded: false
-            })
+            });
           }
         }
       }
@@ -71,9 +72,9 @@ Component({
     this.setData({
       imgThumb: this.dataset.thumb || '',
       lazyLoad: !!this.dataset.lazy
-    })
+    });
     if (this.dataset.retry === undefined) {
-      this.dataset.retry = config.retry
+      this.dataset.retry = config.retry;
     }
   },
   methods: {
@@ -82,21 +83,21 @@ Component({
      * @param {*} e
      */
     onImageLoad(e) {
-      const type = e.currentTarget.dataset.type
+      const type = e.currentTarget.dataset.type;
       if (type === 'data') {
         // 高清大图加载成功
-        this._updateAsync({ imgLoaded: true })
+        this._updateAsync({ imgLoaded: true });
       } else {
         // 缩略图加载成功
-        this._updateAsync({ thumbLoaded: true })
+        this._updateAsync({ thumbLoaded: true });
       }
 
-      const url = type === 'data' ? this.data.imgSrc : this.data.imgThumb
+      const url = type === 'data' ? this.data.imgSrc : this.data.imgThumb;
       this.triggerEvent('update', {
-        type: type,
+        type,
         src: url
-      })
-      config.onLoad && config.onLoad(e, url)
+      });
+      config.onLoad && config.onLoad(e, url);
     },
 
     /**
@@ -105,14 +106,14 @@ Component({
      */
     onImageError(e) {
       if (e.currentTarget.dataset.type === 'thumb') {
-        config.onError && config.onError(e, this.data.imgThumb)
+        config.onError && config.onError(e, this.data.imgThumb);
       } else {
-        const url = this.data.imgSrc
-        config.onError && config.onError(e, url)
+        const url = this.data.imgSrc;
+        config.onError && config.onError(e, url);
         if (this.dataset.retry > 0) {
           this.setData({ imgSrc: config.getRetryURL(url, this.dataset.retry--) });
         } else {
-          this.triggerEvent('fail', this.data.imgSrc)
+          this.triggerEvent('fail', this.data.imgSrc);
         }
       }
     },
@@ -123,10 +124,10 @@ Component({
     */
     _updateAsync(data) {
       if (wx.nextTick) {
-        wx.nextTick(() => this.setData(data))
+        wx.nextTick(() => this.setData(data));
       } else {
-        setTimeout(() => this.setData(data), 0)
+        setTimeout(() => this.setData(data), 0);
       }
     }
   },
-})
+});
