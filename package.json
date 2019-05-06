@@ -1,6 +1,6 @@
 {
   "name": "miniprogram-image",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "description": "",
   "main": "miniprogram_dist/index.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "dist": "npm run build",
     "clean-dev": "gulp clean --develop",
     "clean": "gulp clean",
-    "test": "jest ./test/* --silent --bail",
+    "jest": "jest ./test/* --silent --bail",
+    "test": "npm run lint && npm run build",
     "coverage": "jest ./test/* --coverage --bail",
     "lint": "eslint \"src/**/*.js\"",
     "lint-tools": "eslint \"tools/**/*.js\" --rule \"import/no-extraneous-dependencies: false\""
