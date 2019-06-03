@@ -2,6 +2,7 @@
     class="Img {{imgLoaded?' is-loaded':''}}"
     src="{{imgSrc}}"
     mode="{{mode}}"
+    show-menu-by-longpress="{{showMenuByLongpress}}"
     lazy-load="{{lazyLoad}}"
     bind:error="onImageError"
     bind:load="onImageLoad"

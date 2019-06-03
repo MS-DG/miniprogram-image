@@ -1,3 +1,24 @@
+interface Event<T> {
+  detail: T,
+  currentTarget: {
+    dataset: {
+      type: "thumb" | "data"
+    }
+  },
+  type: string,
+}
+
+/**
+ * 加载失败
+ */
+export type ErrorEvent = Event<{ errMsg: string }>;
+/**
+ * 加载成功
+ */
+export type LoadEvent = Event<{
+  height: number,
+  height: number
+}>
 /**
  * miniprogram-image 全局配置
  */
@@ -6,7 +27,7 @@ interface ImageConfig {
     * onError event
     * @type Function
     */
-  onError?: (event: object, url: string) => void;
+  onError?: (event: ErrorEvent, url: string) => void;
 
   /**
     * 重试URL策略
@@ -17,7 +38,7 @@ interface ImageConfig {
    * onLoad event
    * @type Function
    */
-  onLoad?: (event: object, url: string) => void;
+  onLoad?: (event: LoadEvent, url: string) => void;
 
   /**
    * 重试次数
@@ -29,4 +50,6 @@ interface ImageConfig {
 /**
  * 全局配置
  */
-export const config: ImageConfig;
+declare const config: ImageConfig;
+
+export default config;

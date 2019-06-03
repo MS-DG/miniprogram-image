@@ -27,6 +27,10 @@ Component({
     },
     mode: String,
     height: String,
+    /**
+     * 开启长按图片显示识别小程序码菜单
+     */
+    showMenuByLongpress: Boolean,
   },
   data: {
     imgThumb: '',
