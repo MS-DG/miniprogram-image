@@ -16,7 +16,7 @@ export type ErrorEvent = Event<{ errMsg: string }>;
  * 加载成功
  */
 export type LoadEvent = Event<{
-  height: number,
+  width: number,
   height: number
 }>
 /**
