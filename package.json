@@ -3,6 +3,7 @@
   "version": "1.9.0",
   "description": "",
   "main": "miniprogram_dist/index.js",
+  "types": "index.d.ts",
   "scripts": {
     "dev": "gulp dev --develop",
     "watch": "gulp watch --develop --watch",
