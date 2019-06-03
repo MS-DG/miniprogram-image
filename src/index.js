@@ -1,40 +1,7 @@
-
-const defaultConfig = {
-
-  /**
-  * onError event
-  * @type Function
-  */
-  onError: console.error,
-
-  /**
-   * 重试
-   */
-  // eslint-disable-next-line no-unused-vars
-  getRetryURL: (url, times) => url + ' ',
-
-  /**
-  * onLoad event
-  * @type Function
-  */
-  onLoad: console.info,
-
-  /**
-  * @type number
-  */
-  retry: 1,
-};
-
-const app = getApp();
-
-if (app && !app.__image_config) {
-  app.__image_config = defaultConfig;
-}
-
 /**
  * 全局配置
  */
-export const config = app ? app.__image_config : defaultConfig;
+const config = require('./config');
 
 Component({
   properties: {
