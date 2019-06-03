@@ -45,7 +45,7 @@ npm i miniprogram-image -S
 ### 全局配置
 
 ```js
-import {config} from 'miniprogram-image'
+import config from 'miniprogram-image/config'
 config.retry = 5 //全局默认重试次数，若组件中设置则优先使用组件设置
 config.onError = (event,url)=>{} // 出错回调LoggerHandler
 config.onLoad = (event,url)=>{} // 成功加载LoggerHandler
