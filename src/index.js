@@ -24,7 +24,7 @@ Component({
             // 图片预处理
             Promise.resolve(config.prepareUrl(newVal))
               .then(imgSrc => this.setData({ imgSrc }))
-              .catch(this.setData({ imgSrc: newVal }))
+              .catch(this.setData({ imgSrc: newVal }));
           } else {
             this._updateAsync({
               imgSrc: newVal
