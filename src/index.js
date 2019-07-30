@@ -20,15 +20,17 @@ Component({
               thumbLoaded: false
             });
           }
-          if (config.prepareUrl) {
-            // 图片预处理
-            Promise.resolve(config.prepareUrl(newVal))
-              .then(imgSrc => this.setData({ imgSrc }))
-              .catch(this.setData({ imgSrc: newVal }));
+          const img = config.prepareUrl ? config.prepareUrl(newVal) : newVal;
+          if (typeof img === 'string') {
+            this._updateAsync({ imgSrc: img });
           } else {
-            this._updateAsync({
-              imgSrc: newVal
-            });
+            // 图片预处理
+            img
+              .then(imgSrc => this.setData({ imgSrc }))
+              .catch((err) => {
+                console.error(err);
+                this.setData({ imgSrc: newVal });
+              });
           }
         }
       }
