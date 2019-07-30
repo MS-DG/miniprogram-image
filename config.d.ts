@@ -41,6 +41,11 @@ interface ImageConfig {
   onLoad?: (event: LoadEvent, url: string) => void;
 
   /**
+   * Url预处理
+   */
+  prepareUrl?: (url: string) => PromiseLike<string> | string;
+
+  /**
    * 重试次数
    * @type number
    */

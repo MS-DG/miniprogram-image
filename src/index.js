@@ -11,15 +11,23 @@ Component({
         if (oldVal !== newVal) {
           if (this.dataset.thumb === this.data.imgThumb) {
             this._updateAsync({
-              imgSrc: newVal,
               imgLoaded: false
             });
           } else {
             this._updateAsync({
-              imgSrc: newVal,
               imgLoaded: false,
               imgThumb: this.dataset.thumb || '',
               thumbLoaded: false
+            });
+          }
+          if (config.prepareUrl) {
+            // 图片预处理
+            Promise.resolve(config.prepareUrl(newVal))
+              .then(imgSrc => this.setData({ imgSrc }))
+              .catch(this.setData({ imgSrc: newVal }))
+          } else {
+            this._updateAsync({
+              imgSrc: newVal
             });
           }
         }

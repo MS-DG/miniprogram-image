@@ -6,6 +6,8 @@ module.exports.default = module.exports = {
      */
   onError: console.error,
 
+  prepareUrl: undefined,
+
   /**
      * 重试
      */
